@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Your Name — Automation Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@400;500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --ink: #0f0e0b;
+  --paper: #f5f1e8;
+  --cream: #ede8d8;
+  --warm: #d4a843;
+  --amber: #e8b84b;
+  --rust: #c4622d;
+  --sage: #6b8f71;
+  --slate: #4a5568;
+  --muted: #7a7568;
+  --border: #ccc4b0;
+  --card-bg: #faf7f0;
+  --section-bg: #1a1814;
+  --section-text: #e8e0cc;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Jost',sans-serif;
+  font-weight:300;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--cream);}
+::-webkit-scrollbar-thumb{background:var(--warm);}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 48px;
+  background:rgba(245,241,232,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'Playfair Display',serif;
+  font-size:18px;font-weight:700;
+  letter-spacing:0.02em;
+  color:var(--ink);
+  text-decoration:none;
+}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{
+  font-size:12px;font-weight:500;
+  text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--muted);text-decoration:none;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--warm);}
+.nav-cta{
+  font-size:12px;font-weight:500;
+  text-transform:uppercase;letter-spacing:0.08em;
+  padding:9px 22px;
+  background:var(--ink);color:var(--paper);
+  border:none;cursor:pointer;
+  text-decoration:none;
+  transition:background 0.2s;
+}
+.nav-cta:hover{background:var(--rust);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 48px 80px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:var(--paper);
+  z-index:0;
+}
+/* grid lines */
+.hero-bg::before{
+  content:'';
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(212,168,67,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,168,67,0.08) 1px, transparent 1px);
+  background-size:60px 60px;
+}
+.hero-bg::after{
+  content:'';
+  position:absolute;
+  bottom:-200px;right:-200px;
+  width:700px;height:700px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(212,168,67,0.12) 0%, transparent 70%);
+}
+
+.hero-label{
+  position:relative;z-index:1;
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;font-weight:500;
+  text-transform:uppercase;letter-spacing:0.12em;
+  color:var(--warm);
+  margin-bottom:28px;
+  animation:fadeUp 0.8s ease both;
+}
+.hero-label::before{
+  content:'';
+  width:32px;height:1px;background:var(--warm);
+}
+
+.hero h1{
+  position:relative;z-index:1;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(56px,8vw,110px);
+  line-height:0.95;
+  font-weight:900;
+  letter-spacing:-0.03em;
+  max-width:900px;
+  animation:fadeUp 0.8s 0.1s ease both;
+}
+.hero h1 em{
+  font-style:italic;
+  color:var(--warm);
+}
+.hero-sub{
+  position:relative;z-index:1;
+  margin-top:32px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:48px;
+  align-items:flex-end;
+  animation:fadeUp 0.8s 0.2s ease both;
+}
+.hero-desc{
+  max-width:420px;
+  font-size:16px;
+  color:var(--slate);
+  line-height:1.75;
+}
+.hero-stats{
+  display:flex;gap:40px;
+  flex-shrink:0;
+}
+.hero-stat{display:flex;flex-direction:column;align-items:flex-end;gap:2px;}
+.hero-stat-num{
+  font-family:'Playfair Display',serif;
+  font-size:36px;font-weight:700;
+  color:var(--ink);line-height:1;
+}
+.hero-stat-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;color:var(--muted);
+  text-transform:uppercase;letter-spacing:0.1em;
+}
+
+.scroll-hint{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  z-index:1;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;color:var(--muted);
+  letter-spacing:0.1em;text-transform:uppercase;
+  animation:fadeIn 1.5s 1s both;
+}
+.scroll-line{
+  width:1px;height:48px;
+  background:linear-gradient(var(--warm),transparent);
+  animation:scrollLine 1.5s ease infinite;
+}
+
+/* ── DIVIDER ── */
+.divider{
+  display:flex;align-items:center;gap:16px;
+  padding:0 48px;margin:64px 0 0;
+}
+.divider-line{flex:1;height:1px;background:var(--border);}
+.divider-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;color:var(--muted);
+  text-transform:uppercase;letter-spacing:0.12em;
+  white-space:nowrap;
+}
+
+/* ── ABOUT ── */
+.about{
+  padding:80px 48px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+.about-left{}
+.section-tag{
+  display:inline-block;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;font-weight:500;
+  text-transform:uppercase;letter-spacing:0.12em;
+  color:var(--warm);
+  border:1px solid var(--warm);
+  padding:4px 10px;
+  margin-bottom:24px;
+}
+.about-left h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(32px,4vw,52px);
+  line-height:1.1;
+  font-weight:700;
+  margin-bottom:24px;
+}
+.about-left h2 em{font-style:italic;color:var(--rust);}
+.about-text{
+  font-size:15px;color:var(--slate);
+  line-height:1.8;margin-bottom:16px;
+}
+.about-right{}
+.about-skills{display:flex;flex-direction:column;gap:16px;}
+.skill-row{
+  display:flex;align-items:center;gap:16px;
+  padding-bottom:16px;
+  border-bottom:1px solid var(--border);
+}
+.skill-name{
+  font-size:13px;font-weight:500;
+  min-width:140px;color:var(--ink);
+}
+.skill-bar{flex:1;height:3px;background:var(--cream);border-radius:2px;overflow:hidden;}
+.skill-fill{
+  height:100%;background:var(--warm);border-radius:2px;
+  width:0%;transition:width 1.2s cubic-bezier(0.16,1,0.3,1);
+}
+.skill-level{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;color:var(--muted);
+  min-width:36px;text-align:right;
+}
+
+/* ── WORK DARK ── */
+.work{
+  background:var(--section-bg);
+  padding:100px 48px;
+}
+.work-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:64px;
+}
+.work-header h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(36px,5vw,64px);
+  line-height:1.05;
+  font-weight:700;
+  color:var(--section-text);
+}
+.work-header h2 em{font-style:italic;color:var(--amber);}
+.work-count{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;color:#5a5648;
+  text-transform:uppercase;letter-spacing:0.1em;
+}
+
+.projects{display:flex;flex-direction:column;gap:2px;}
+.project{
+  border:1px solid #2a2820;
+  background:#1e1c17;
+  overflow:hidden;
+  transition:border-color 0.3s;
+  cursor:pointer;
+}
+.project:hover{border-color:#3d3928;}
+.project-header{
+  display:grid;
+  grid-template-columns:60px 1fr auto 40px;
+  gap:24px;
+  align-items:center;
+  padding:28px 32px;
+}
+.project-num{
+  font-family:'Playfair Display',serif;
+  font-size:36px;font-weight:700;
+  color:#3a3828;line-height:1;
+}
+.project-info{}
+.project-title{
+  font-size:17px;font-weight:500;
+  color:var(--section-text);margin-bottom:4px;
+}
+.project-sub{font-size:13px;color:#5a5648;}
+.project-tags{display:flex;gap:8px;flex-wrap:wrap;}
+.ptag{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;padding:3px 8px;
+  border:1px solid #3a3828;
+  color:#7a7258;text-transform:uppercase;letter-spacing:0.06em;
+}
+.ptag-hot{border-color:rgba(232,184,75,0.4);color:var(--amber);}
+.project-toggle{
+  width:32px;height:32px;
+  border:1px solid #3a3828;
+  display:flex;align-items:center;justify-content:center;
+  color:#5a5648;font-size:14px;
+  transition:all 0.3s;
+}
+.project.open .project-toggle{
+  background:var(--amber);border-color:var(--amber);color:var(--ink);transform:rotate(45deg);
+}
+
+.project-body{
+  display:none;
+  padding:0 32px 32px;
+  border-top:1px solid #2a2820;
+}
+.project.open .project-body{display:block;}
+
+.project-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+  padding-top:28px;
+}
+.project-desc{
+  font-size:14px;color:#8a8270;
+  line-height:1.8;
+}
+.project-impact{display:flex;flex-direction:column;gap:16px;}
+.impact-item{
+  display:flex;gap:16px;align-items:flex-start;
+  padding-bottom:16px;border-bottom:1px solid #2a2820;
+}
+.impact-item:last-child{border-bottom:none;}
+.impact-icon{
+  width:32px;height:32px;
+  background:rgba(232,184,75,0.1);
+  border:1px solid rgba(232,184,75,0.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;flex-shrink:0;margin-top:2px;
+}
+.impact-text{font-size:13px;color:#7a7258;line-height:1.6;}
+.impact-bold{font-weight:500;color:var(--section-text);display:block;margin-bottom:3px;}
+
+.flow-row{
+  display:flex;align-items:center;gap:0;
+  margin-top:24px;
+  border:1px solid #2a2820;
+  overflow:hidden;
+}
+.flow-node{
+  flex:1;padding:12px 16px;
+  background:#252318;
+}
+.flow-node:not(:last-child){border-right:1px solid #2a2820;}
+.flow-role{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:#4a4838;margin-bottom:4px;}
+.flow-name{font-size:12px;font-weight:500;color:var(--section-text);}
+.flow-evt{font-size:11px;color:#5a5648;}
+.flow-arr{
+  padding:0 12px;background:#1a1814;
+  display:flex;align-items:center;
+  color:#3a3828;font-size:16px;
+  border-right:1px solid #2a2820;
+}
+
+/* ── SERVICES ── */
+.services{
+  padding:100px 48px;
+  background:var(--paper);
+}
+.services-header{margin-bottom:64px;}
+.services-header h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(36px,5vw,64px);
+  line-height:1.05;font-weight:700;
+}
+.services-header h2 em{font-style:italic;color:var(--rust);}
+.services-sub{
+  max-width:480px;
+  font-size:15px;color:var(--slate);
+  margin-top:16px;
+}
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+}
+.service-card{
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  padding:40px 32px;
+  position:relative;
+  overflow:hidden;
+  transition:all 0.3s;
+}
+.service-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;
+  height:3px;
+  background:var(--warm);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.service-card:hover{background:var(--cream);}
+.service-card:hover::before{transform:scaleX(1);}
+.service-icon{
+  font-size:28px;margin-bottom:24px;display:block;
+}
+.service-title{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-weight:700;
+  margin-bottom:12px;
+}
+.service-desc{font-size:13px;color:var(--slate);line-height:1.7;margin-bottom:20px;}
+.service-tools{display:flex;flex-wrap:wrap;gap:6px;}
+.tool-tag{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;padding:3px 8px;
+  background:var(--cream);border:1px solid var(--border);
+  color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;
+}
+
+/* ── TESTIMONIAL ── */
+.testimonial-section{
+  background:var(--ink);
+  padding:100px 48px;
+  text-align:center;
+}
+.quote-mark{
+  font-family:'Playfair Display',serif;
+  font-size:120px;line-height:0.7;
+  color:var(--warm);opacity:0.3;
+  margin-bottom:24px;display:block;
+}
+.quote-text{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:clamp(22px,3vw,36px);
+  color:var(--paper);
+  max-width:700px;margin:0 auto;
+  line-height:1.5;
+}
+.quote-author{
+  margin-top:32px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;color:var(--warm);
+  text-transform:uppercase;letter-spacing:0.1em;
+}
+
+/* ── STACK ── */
+.stack{padding:100px 48px;}
+.stack h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(36px,5vw,64px);
+  font-weight:700;line-height:1.05;
+  margin-bottom:64px;
+}
+.stack h2 em{font-style:italic;color:var(--warm);}
+.stack-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:2px;
+}
+.stack-item{
+  border:1px solid var(--border);
+  padding:24px 20px;
+  display:flex;flex-direction:column;gap:8px;
+  background:var(--card-bg);
+  transition:all 0.25s;
+}
+.stack-item:hover{background:var(--ink);border-color:var(--ink);}
+.stack-item:hover .stack-name{color:var(--paper);}
+.stack-item:hover .stack-cat{color:var(--warm);}
+.stack-emoji{font-size:22px;}
+.stack-name{font-size:13px;font-weight:500;color:var(--ink);transition:color 0.25s;}
+.stack-cat{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;color:var(--muted);
+  text-transform:uppercase;letter-spacing:0.08em;
+  transition:color 0.25s;
+}
+
+/* ── CONTACT ── */
+.contact{
+  background:var(--paper);
+  border-top:1px solid var(--border);
+  padding:100px 48px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:start;
+}
+.contact-left h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(36px,4vw,56px);
+  font-weight:700;line-height:1.1;
+  margin-bottom:20px;
+}
+.contact-left h2 em{font-style:italic;color:var(--rust);}
+.contact-text{font-size:15px;color:var(--slate);margin-bottom:40px;line-height:1.8;}
+.contact-links{display:flex;flex-direction:column;gap:16px;}
+.contact-link{
+  display:flex;align-items:center;gap:16px;
+  padding:16px 20px;
+  border:1px solid var(--border);
+  background:var(--card-bg);
+  text-decoration:none;
+  color:var(--ink);
+  transition:all 0.25s;
+}
+.contact-link:hover{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+.contact-link:hover .cl-arrow{transform:translate(3px,-3px);}
+.cl-icon{font-size:18px;}
+.cl-label{flex:1;}
+.cl-main{font-size:14px;font-weight:500;display:block;}
+.cl-sub{font-size:12px;color:var(--muted);}
+.contact-link:hover .cl-sub{color:rgba(245,241,232,0.5);}
+.cl-arrow{font-size:16px;transition:transform 0.25s;color:var(--warm);}
+
+.contact-right{}
+.contact-form{display:flex;flex-direction:column;gap:16px;}
+.form-group{display:flex;flex-direction:column;gap:6px;}
+.form-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);
+}
+.form-input,.form-textarea{
+  width:100%;
+  padding:14px 16px;
+  border:1px solid var(--border);
+  background:var(--card-bg);
+  color:var(--ink);
+  font-family:'Jost',sans-serif;
+  font-size:14px;
+  outline:none;
+  transition:border-color 0.2s;
+}
+.form-input:focus,.form-textarea:focus{border-color:var(--warm);}
+.form-textarea{min-height:120px;resize:vertical;}
+.form-btn{
+  padding:16px 32px;
+  background:var(--ink);color:var(--paper);
+  border:none;cursor:pointer;
+  font-family:'Jost',sans-serif;
+  font-size:14px;font-weight:500;
+  text-transform:uppercase;letter-spacing:0.08em;
+  transition:background 0.2s;
+  align-self:flex-start;
+}
+.form-btn:hover{background:var(--rust);}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ink);
+  padding:40px 48px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid #2a2820;
+}
+.footer-logo{
+  font-family:'Playfair Display',serif;
+  font-size:20px;font-weight:700;color:var(--paper);
+}
+.footer-copy{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;color:#3a3828;
+}
+.footer-made{
+  font-size:12px;color:#3a3828;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes fadeIn{
+  from{opacity:0;}to{opacity:1;}
+}
+@keyframes scrollLine{
+  0%{transform:scaleY(0);transform-origin:top;}
+  50%{transform:scaleY(1);transform-origin:top;}
+  50.01%{transform:scaleY(1);transform-origin:bottom;}
+  100%{transform:scaleY(0);transform-origin:bottom;}
+}
+
+.reveal{
+  opacity:0;transform:translateY(24px);
+  transition:opacity 0.7s ease,transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:16px 24px;}
+  .nav-links{display:none;}
+  .hero{padding:0 24px 64px;}
+  .hero h1{font-size:clamp(42px,10vw,72px);}
+  .hero-sub{grid-template-columns:1fr;gap:24px;}
+  .hero-stats{justify-content:flex-start;}
+  .divider,.about,.services,.stack,.contact,.work{padding-left:24px;padding-right:24px;}
+  .about{grid-template-columns:1fr;gap:48px;}
+  .services-grid{grid-template-columns:1fr;}
+  .project-header{grid-template-columns:40px 1fr 40px;gap:16px;}
+  .project-tags{display:none;}
+  .project-grid{grid-template-columns:1fr;}
+  .contact{grid-template-columns:1fr;gap:48px;}
+  footer{flex-direction:column;gap:16px;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">YourName.</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#stack">Tools</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-label">Automation Specialist · Process Designer</div>
+  <h1>I build systems<br>that work <em>while<br>you sleep.</em></h1>
+  <div class="hero-sub">
+    <p class="hero-desc">
+      I design and implement no-code automation workflows that eliminate repetitive work, reduce human error, and help businesses and individuals run more efficiently — without expensive software.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">18+</span>
+        <span class="hero-stat-label">Automations Built</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">0</span>
+        <span class="hero-stat-label">Lines of Code Needed</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<div class="divider reveal">
+  <div class="divider-line"></div>
+  <div class="divider-label">§ About</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-left reveal">
+    <div class="section-tag">Who I am</div>
+    <h2>Turning manual work into <em>automatic</em> systems</h2>
+    <p class="about-text">
+      I specialize in no-code automation using tools like Zapier, Google Workspace, and Make — connecting apps so data flows automatically without anyone touching a keyboard.
+    </p>
+    <p class="about-text">
+      Whether you're a freelancer drowning in admin tasks, a small business losing leads, or a job seeker who wants smarter systems — I design workflows that save real hours every week.
+    </p>
+  </div>
+  <div class="about-right reveal">
+    <div class="about-skills" id="skillBars">
+      <div class="skill-row">
+        <div class="skill-name">Zapier</div>
+        <div class="skill-bar"><div class="skill-fill" data-pct="90"></div></div>
+        <div class="skill-level">Expert</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Google Workspace</div>
+        <div class="skill-bar"><div class="skill-fill" data-pct="85"></div></div>
+        <div class="skill-level">Advanced</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Workflow Design</div>
+        <div class="skill-bar"><div class="skill-fill" data-pct="88"></div></div>
+        <div class="skill-level">Advanced</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Process Mapping</div>
+        <div class="skill-bar"><div class="skill-fill" data-pct="80"></div></div>
+        <div class="skill-level">Advanced</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Data Organisation</div>
+        <div class="skill-bar"><div class="skill-fill" data-pct="82"></div></div>
+        <div class="skill-level">Advanced</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider reveal">
+  <div class="divider-line"></div>
+  <div class="divider-label">§ Work</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="work-header reveal">
+    <h2>Selected<br><em>Automation</em><br>Projects</h2>
+    <div class="work-count">06 Projects</div>
+  </div>
+
+  <div class="projects">
+
+    <!-- PROJECT 1 -->
+    <div class="project" onclick="toggleProject(this)">
+      <div class="project-header">
+        <div class="project-num">01</div>
+        <div class="project-info">
+          <div class="project-title">Job Application Tracker</div>
+          <div class="project-sub">Automated lead pipeline for job seekers</div>
+        </div>
+        <div class="project-tags">
+          <span class="ptag ptag-hot">Career</span>
+          <span class="ptag">Zapier Free</span>
+          <span class="ptag">Google Sheets</span>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-grid">
+          <div>
+            <p class="project-desc">Built a zero-cost system that automatically logs every job application sent from Gmail into a live Google Sheet — including company, role, date, and status. Eliminates the need to manually track 50+ applications and ensures no follow-up is missed.</p>
+            <div class="flow-row">
+              <div class="flow-node">
+                <div class="flow-role">⚡ Trigger</div>
+                <div class="flow-name">Gmail</div>
+                <div class="flow-evt">New Sent Email matching "application"</div>
+              </div>
+              <div class="flow-arr">→</div>
+              <div class="flow-node">
+                <div class="flow-role">✅ Action</div>
+                <div class="flow-name">Google Sheets</div>
+                <div class="flow-evt">Create row: Company, Role, Date, Status</div>
+              </div>
+            </div>
+          </div>
+          <div class="project-impact">
+            <div class="impact-item">
+              <div class="impact-icon">⏱</div>
+              <div class="impact-text"><span class="impact-bold">~2 hours saved per week</span>No more manual copy-pasting or lost applications</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-icon">🎯</div>
+              <div class="impact-text"><span class="impact-bold">100% follow-up rate</span>Every application is tracked with status and next action</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-icon">💰</div>
+              <div class="impact-text"><span class="impact-bold">$0 cost</span>Built entirely on Zapier Free + Google Workspace</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project" onclick="toggleProject(this)">
+      <div class="project-header">
+        <div class="project-num">02</div>
+        <div class="project-info">
+          <div class="project-title">Real-Time Job Alert System</div>
+          <div class="project-sub">RSS-powered job listing monitor</div>
+        </div>
+        <div class="project-tags">
+          <span class="ptag ptag-hot">Career</span>
+          <span class="ptag">RSS</span>
+          <span class="ptag">Gmail</span>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-grid">
+          <div>
+            <p class="project-desc">Configured a live RSS monitoring system using Google Alerts + Zapier that delivers instant email notifications whenever a job matching target keywords appears on LinkedIn or Indeed. Being among the first applicants dramatically improves response rates for competitive roles.</p>
+            <div class="flow-row">
+              <div class="flow-node">
+                <div class="flow-role">⚡ Trigger</div>
+                <div class="flow-name">RSS by Zapier</div>
+                <div class="flow-evt">New item in Indeed/LinkedIn RSS feed</div>
+              </div>
+              <div class="flow-arr">→</div>
+              <div class="flow-node">
+                <div class="flow-role">✅ Action</div>
+                <div class="flow-name">Gmail</div>
+                <div class="flow-evt">Send alert email with title + link</div>
+              </div>
+            </div>
+          </div>
+          <div class="project-impact">
+            <div class="impact-item">
+              <div class="impact-icon">⚡</div>
+              <div class="impact-text"><span class="impact-bold">15-min response time</span>Notified within Zapier's free-tier check interval</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-icon">📌</div>
+              <div class="impact-text"><span class="impact-bold">3 job titles monitored</span>Separate Zaps per role type using free plan slots</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-icon">💰</div>
+              <div class="impact-text"><span class="impact-bold">Replaces ₱1,000+/month tools</span>LinkedIn Premium alerts built for free</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project" onclick="toggleProject(this)">
+      <div class="project-header">
+        <div class="project-num">03</div>
+        <div class="project-info">
+          <div class="project-title">Client Lead Capture System</div>
+          <div class="project-sub">Google Forms → Sheets CRM for freelancers</div>
+        </div>
+        <div class="project-tags">
+          <span class="ptag ptag-hot">Business</span>
+          <span class="ptag">CRM</span>
+          <span class="ptag">Google Forms</span>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-grid">
+          <div>
+            <p class="project-desc">Designed a lightweight CRM replacement for a freelancer using Google Forms as the intake form and Google Sheets as the live lead database. Every inquiry automatically populates the tracker with name, email, service needed, budget, and timestamp — eliminating manual data entry and lost leads from email inboxes.</p>
+            <div class="flow-row">
+              <div class="flow-node">
+                <div class="flow-role">⚡ Trigger</div>
+                <div class="flow-name">Google Forms</div>
+                <div class="flow-evt">New client inquiry submitted</div>
+              </div>
+              <div class="flow-arr">→</div>
+              <div class="flow-node">
+                <div class="flow-role">✅ Action</div>
+                <div class="flow-name">Google Sheets</div>
+                <div class="flow-evt">Log lead: Name, Email, Budget, Status</div>
+              </div>
+            </div>
+          </div>
+          <div class="project-impact">
+            <div class="impact-item">
+              <div class="impact-icon">📈</div>
+              <div class="impact-text"><span class="impact-bold">Zero lost leads</span>Every inquiry captured automatically regardless of volume</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-icon">👥</div>
+              <div class="impact-text"><span class="impact-bold">Team-accessible</span>Shared Sheets gives whole team live visibility</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-icon">💰</div>
+              <div class="impact-text"><span class="impact-bold">Replaces ₱5,000+/month CRM</span>HubSpot-like function at zero cost</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 4 -->
+    <div class="project" onclick="toggleProject(this)">
+      <div class="project-header">
+        <div class="project-num">04</div>
+        <div class="project-info">
+          <div class="project-title">Payment Income Ledger</div>
+          <div class="project-sub">Auto-logging PayPal sales to spreadsheet</div>
+        </div>
+        <div class="project-tags">
+          <span class="ptag ptag-hot">Finance</span>
+          <span class="ptag">PayPal</span>
+          <span class="ptag">Google Sheets</span>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-grid">
+          <div>
+            <p class="project-desc">Built an automated bookkeeping system for a micro-business owner that records every PayPal payment — amount, customer name, email, item, date, and transaction ID — directly into a Google Sheet. Month-end totals calculate automatically using SUMIF formulas, making tax season and financial reviews effortless.</p>
+            <div class="flow-row">
+              <div class="flow-node">
+                <div class="flow-role">⚡ Trigger</div>
+                <div class="flow-name">PayPal</div>
+                <div class="flow-evt">Successful sale received</div>
+              </div>
+              <div class="flow-arr">→</div>
+              <div class="flow-node">
+                <div class="flow-role">✅ Action</div>
+                <div class="flow-name">Google Sheets</div>
+                <div class="flow-evt">Log: Amount, Customer, Date, Item, TX ID</div>
+              </div>
+            </div>
+          </div>
+          <div class="project-impact">
+            <div class="impact-item">
+              <div class="impact-icon">📊</div>
+              <div class="impact-text"><span class="impact-bold">Real-time income tracking</span>No more end-of-month scrambles to reconcile payments</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-icon">🧾</div>
+              <div class="impact-text"><span class="impact-bold">Tax-ready records</span>Accountant-friendly sheet exportable as CSV</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-icon">💰</div>
+              <div class="impact-text"><span class="impact-bold">Replaces ₱3,000+/month tools</span>FreshBooks-level tracking for free</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 5 -->
+    <div class="project" onclick="toggleProject(this)">
+      <div class="project-header">
+        <div class="project-num">05</div>
+        <div class="project-info">
+          <div class="project-title">Morning Briefing Automation</div>
+          <div class="project-sub">Scheduled daily email ritual system</div>
+        </div>
+        <div class="project-tags">
+          <span class="ptag">Personal</span>
+          <span class="ptag">Productivity</span>
+          <span class="ptag">Schedule</span>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-grid">
+          <div>
+            <p class="project-desc">Designed a personal productivity system that sends a structured daily briefing email every morning at 7AM — including the day's priorities framework, water reminder, and direct links to calendar and task list. Built using Zapier's Schedule trigger at zero cost, replacing a daily manual habit with a reliable automated prompt.</p>
+            <div class="flow-row">
+              <div class="flow-node">
+                <div class="flow-role">⚡ Trigger</div>
+                <div class="flow-name">Schedule by Zapier</div>
+                <div class="flow-evt">Every day at 7:00 AM</div>
+              </div>
+              <div class="flow-arr">→</div>
+              <div class="flow-node">
+                <div class="flow-role">✅ Action</div>
+                <div class="flow-name">Gmail</div>
+                <div class="flow-evt">Send structured morning briefing email</div>
+              </div>
+            </div>
+          </div>
+          <div class="project-impact">
+            <div class="impact-item">
+              <div class="impact-icon">🌅</div>
+              <div class="impact-text"><span class="impact-bold">Daily without fail</span>System runs 365 days/year without human input</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-icon">🎯</div>
+              <div class="impact-text"><span class="impact-bold">Reduces decision fatigue</span>Structured morning framework cuts "where do I start?" time</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 6 -->
+    <div class="project" onclick="toggleProject(this)">
+      <div class="project-header">
+        <div class="project-num">06</div>
+        <div class="project-info">
+          <div class="project-title">Personal Expense Tracker</div>
+          <div class="project-sub">Mobile form → live budget dashboard</div>
+        </div>
+        <div class="project-tags">
+          <span class="ptag">Personal Finance</span>
+          <span class="ptag">Google Forms</span>
+          <span class="ptag">No App</span>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-grid">
+          <div>
+            <p class="project-desc">Built a frictionless personal budgeting system using a Google Form bookmarked on the phone home screen as a one-tap expense logger. Each entry is automatically pushed to a Sheets budget tracker with SUMIF formulas that calculate monthly totals per category in real time — no app subscription, no monthly fee, works on any phone.</p>
+            <div class="flow-row">
+              <div class="flow-node">
+                <div class="flow-role">⚡ Trigger</div>
+                <div class="flow-name">Google Forms</div>
+                <div class="flow-evt">New expense submitted from phone</div>
+              </div>
+              <div class="flow-arr">→</div>
+              <div class="flow-node">
+                <div class="flow-role">✅ Action</div>
+                <div class="flow-name">Google Sheets</div>
+                <div class="flow-evt">Log: Amount, Category, Note, Date</div>
+              </div>
+            </div>
+          </div>
+          <div class="project-impact">
+            <div class="impact-item">
+              <div class="impact-icon">📱</div>
+              <div class="impact-text"><span class="impact-bold">10-second capture</span>Faster than any budgeting app on the market</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-icon">💰</div>
+              <div class="impact-text"><span class="impact-bold">Replaces YNAB / Mint</span>Full budget tracking at absolutely zero cost</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider reveal">
+  <div class="divider-line"></div>
+  <div class="divider-label">§ Services</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <h2>What I can<br>build for <em>you</em></h2>
+    <p class="services-sub">Every service below is deliverable using free or low-cost tools. No hidden software subscriptions required on your end.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon">⚡</span>
+      <div class="service-title">Zapier Automation Setup</div>
+      <p class="service-desc">Design and build complete Zapier workflows connecting your existing apps — Gmail, Sheets, Forms, Calendly, Shopify, and more. Free-tier optimized.</p>
+      <div class="service-tools">
+        <span class="tool-tag">Zapier</span>
+        <span class="tool-tag">Gmail</span>
+        <span class="tool-tag">Google Sheets</span>
+        <span class="tool-tag">Calendly</span>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🗂️</span>
+      <div class="service-title">No-Code CRM Build</div>
+      <p class="service-desc">Build a fully functional client management and lead tracking system using Google Workspace — no monthly CRM subscription needed. Team-shareable and mobile-friendly.</p>
+      <div class="service-tools">
+        <span class="tool-tag">Google Forms</span>
+        <span class="tool-tag">Google Sheets</span>
+        <span class="tool-tag">Google Drive</span>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">📊</span>
+      <div class="service-title">Workflow Audit & Design</div>
+      <p class="service-desc">Map out your current manual processes and identify every step that can be automated. Deliver a clear automation blueprint you can implement yourself or have me build.</p>
+      <div class="service-tools">
+        <span class="tool-tag">Process Mapping</span>
+        <span class="tool-tag">Workflow Design</span>
+        <span class="tool-tag">Documentation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL PLACEHOLDER -->
+<section class="testimonial-section reveal">
+  <span class="quote-mark">"</span>
+  <p class="quote-text">The automation system saved us hours every week. What used to take our team 3 hours of manual data entry now happens automatically before we even open our laptops.</p>
+  <div class="quote-author">— Satisfied Client · Small Business Owner</div>
+</section>
+
+<div class="divider reveal">
+  <div class="divider-line"></div>
+  <div class="divider-label">§ Tools</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- STACK -->
+<section class="stack" id="stack">
+  <h2 class="reveal">My <em>tool</em><br>stack</h2>
+  <div class="stack-grid">
+    <div class="stack-item reveal"><span class="stack-emoji">⚡</span><span class="stack-name">Zapier</span><span class="stack-cat">Automation</span></div>
+    <div class="stack-item reveal"><span class="stack-emoji">📊</span><span class="stack-name">Google Sheets</span><span class="stack-cat">Data / CRM</span></div>
+    <div class="stack-item reveal"><span class="stack-emoji">📝</span><span class="stack-name">Google Forms</span><span class="stack-cat">Data Capture</span></div>
+    <div class="stack-item reveal"><span class="stack-emoji">📧</span><span class="stack-name">Gmail</span><span class="stack-cat">Communication</span></div>
+    <div class="stack-item reveal"><span class="stack-emoji">📅</span><span class="stack-name">Google Calendar</span><span class="stack-cat">Scheduling</span></div>
+    <div class="stack-item reveal"><span class="stack-emoji">💾</span><span class="stack-name">Google Drive</span><span class="stack-cat">Storage</span></div>
+    <div class="stack-item reveal"><span class="stack-emoji">📆</span><span class="stack-name">Calendly</span><span class="stack-cat">Booking</span></div>
+    <div class="stack-item reveal"><span class="stack-emoji">🛒</span><span class="stack-name">Shopify</span><span class="stack-cat">E-commerce</span></div>
+    <div class="stack-item reveal"><span class="stack-emoji">💳</span><span class="stack-name">PayPal</span><span class="stack-cat">Payments</span></div>
+    <div class="stack-item reveal"><span class="stack-emoji">📋</span><span class="stack-name">Typeform</span><span class="stack-cat">Surveys</span></div>
+    <div class="stack-item reveal"><span class="stack-emoji">🔔</span><span class="stack-name">RSS Feeds</span><span class="stack-cat">Monitoring</span></div>
+    <div class="stack-item reveal"><span class="stack-emoji">🗂️</span><span class="stack-name">Trello</span><span class="stack-cat">Project Mgmt</span></div>
+  </div>
+</section>
+
+<div class="divider reveal">
+  <div class="divider-line"></div>
+  <div class="divider-label">§ Contact</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-left reveal">
+    <h2>Let's build something<br><em>useful.</em></h2>
+    <p class="contact-text">
+      Have a repetitive task eating your time? A process your team does manually every day? Let's talk — I'll tell you honestly if automation can solve it and how.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:your@email.com" class="contact-link">
+        <span class="cl-icon">📧</span>
+        <span class="cl-label">
+          <span class="cl-main">your@email.com</span>
+          <span class="cl-sub">Best way to reach me</span>
+        </span>
+        <span class="cl-arrow">↗</span>
+      </a>
+      <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-link">
+        <span class="cl-icon">💼</span>
+        <span class="cl-label">
+          <span class="cl-main">LinkedIn Profile</span>
+          <span class="cl-sub">Connect professionally</span>
+        </span>
+        <span class="cl-arrow">↗</span>
+      </a>
+      <a href="https://github.com/yourusername" target="_blank" class="contact-link">
+        <span class="cl-icon">⚙️</span>
+        <span class="cl-label">
+          <span class="cl-main">GitHub</span>
+          <span class="cl-sub">See my project files</span>
+        </span>
+        <span class="cl-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+  <div class="contact-right reveal">
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label class="form-label">Your name</label>
+        <input type="text" class="form-input" placeholder="Juan dela Cruz" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email address</label>
+        <input type="email" class="form-input" placeholder="juan@email.com" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">What do you need automated?</label>
+        <textarea class="form-textarea" placeholder="Describe the manual task or process you want to automate..." required></textarea>
+      </div>
+      <button type="submit" class="form-btn" id="formBtn">Send Message →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">YourName.</div>
+  <div class="footer-copy">© 2025 · Automation Portfolio</div>
+  <div class="footer-made">Built with pure HTML · Hosted free on GitHub Pages</div>
+</footer>
+
+<script>
+// TOGGLE PROJECTS
+function toggleProject(el){
+  const wasOpen=el.classList.contains('open');
+  document.querySelectorAll('.project.open').forEach(p=>p.classList.remove('open'));
+  if(!wasOpen)el.classList.add('open');
+}
+
+// SCROLL REVEAL
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      // animate skill bars when about section visible
+      if(e.target.querySelector&&e.target.querySelector('.skill-fill')){
+        setTimeout(()=>{
+          e.target.querySelectorAll('.skill-fill').forEach(bar=>{
+            bar.style.width=bar.dataset.pct+'%';
+          });
+        },200);
+      }
+    }
+  });
+},{threshold:0.12});
+
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Also watch skill bar parent
+const skillParent=document.querySelector('.about-right');
+if(skillParent){
+  const skillObs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        setTimeout(()=>{
+          document.querySelectorAll('.skill-fill').forEach(bar=>{
+            bar.style.width=bar.dataset.pct+'%';
+          });
+        },300);
+        skillObs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.3});
+  skillObs.observe(skillParent);
+}
+
+// FORM SUBMIT
+function handleSubmit(e){
+  e.preventDefault();
+  const btn=document.getElementById('formBtn');
+  btn.textContent='Sending...';btn.style.opacity='0.7';
+  setTimeout(()=>{
+    btn.textContent='Message Sent ✓';
+    btn.style.background='#6b8f71';
+    e.target.reset();
+    setTimeout(()=>{
+      btn.textContent='Send Message →';
+      btn.style.background='';btn.style.opacity='1';
+    },3000);
+  },1200);
+}
+
+// SMOOTH NAV
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const target=document.querySelector(a.getAttribute('href'));
+    if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
+</body>
+</html>
